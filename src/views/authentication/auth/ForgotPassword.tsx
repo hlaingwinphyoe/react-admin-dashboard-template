@@ -19,7 +19,7 @@ const ForgotPassword = () => {
           <AuthForgotPassword />
           <Button
             variant="outline"
-            className="mt-4 h-11 w-full dark:border-white/10 dark:bg-white/[0.02] dark:text-slate-100 dark:hover:bg-white/[0.06]"
+            className="mt-4 h-11 w-full dark:border-white/10 dark:bg-white/2 dark:text-slate-100 dark:hover:bg-white/6"
           >
             <Link to={"/"}>Back to Login</Link>
           </Button>

@@ -9,9 +9,6 @@ const BlankLayout = Loadable(lazy(() => import("@/layouts/blank/BlankLayout")));
 
 // authentication
 const Login = Loadable(lazy(() => import("@/views/authentication/auth/Login")));
-const Register = Loadable(
-  lazy(() => import("@/views/authentication/auth/Register")),
-);
 const ForgotPassword = Loadable(
   lazy(() => import("@/views/authentication/auth/ForgotPassword")),
 );
@@ -48,7 +45,6 @@ const Router = [
         element: <BlankLayout />,
         children: [
           { path: "login", element: <Login /> },
-          { path: "register", element: <Register /> },
           { path: "forgot-password", element: <ForgotPassword /> },
           { path: "404", element: <Error /> },
           { path: "*", element: <Navigate to="/auth/404" /> },

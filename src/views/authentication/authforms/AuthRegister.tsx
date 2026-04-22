@@ -20,50 +20,25 @@ const AuthRegister = () => {
       <form onSubmit={handleSubmit} className="mt-8">
         <div className="mb-5">
           <div className="mb-2 block">
-            <Label
-              htmlFor="name"
-              className="text-foreground dark:text-slate-100"
-            >
-              Name
-            </Label>
+            <Label htmlFor="name">Name</Label>
           </div>
-          <Input
-            id="name"
-            type="text"
-            required
-            className="h-12 border-border/80 bg-background/80 px-4 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus-visible:border-emerald-400/60 dark:focus-visible:ring-emerald-400/20"
-          />
+          <Input id="name" type="text" required className="custom-input" />
         </div>
         <div className="mb-5">
           <div className="mb-2 block">
-            <Label
-              htmlFor="Email"
-              className="text-foreground dark:text-slate-100"
-            >
-              Email Address
-            </Label>
+            <Label htmlFor="Email">Email Address</Label>
           </div>
-          <Input
-            id="Email"
-            type="email"
-            required
-            className="h-12 border-border/80 bg-background/80 px-4 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus-visible:border-emerald-400/60 dark:focus-visible:ring-emerald-400/20"
-          />
+          <Input id="Email" type="email" required className="custom-input" />
         </div>
         <div className="mb-6">
           <div className="mb-2 block">
-            <Label
-              htmlFor="userpwd"
-              className="text-foreground dark:text-slate-100"
-            >
-              Password
-            </Label>
+            <Label htmlFor="userpwd">Password</Label>
           </div>
           <Input
             id="userpwd"
             type="password"
             required
-            className="h-12 border-border/80 bg-background/80 px-4 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus-visible:border-emerald-400/60 dark:focus-visible:ring-emerald-400/20"
+            className="custom-input"
           />
         </div>
         <Button

@@ -1,4 +1,3 @@
-import { Link } from "react-router";
 import { Card } from "@/components/ui/card";
 
 import AuthLogin from "../authforms/AuthLogin";
@@ -17,15 +16,6 @@ const Login = () => {
             </div>
             <SocialButtons title="or sign in with" />
             <AuthLogin />
-            <div className="mt-8 flex flex-wrap items-center justify-between gap-2 text-sm font-medium text-muted-foreground dark:text-slate-300">
-              <p>New to React Admin Dashboard Template?</p>
-              <Link
-                to={"/auth/register"}
-                className="text-primary transition-colors hover:text-primary/80 dark:text-emerald-400 dark:hover:text-emerald-300"
-              >
-                Create an account
-              </Link>
-            </div>
           </Card>
         </div>
       </div>

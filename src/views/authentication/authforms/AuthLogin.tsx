@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
@@ -11,7 +11,7 @@ const AuthLogin = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    login(); // Simple mock login
+    login();
     navigate("/");
   };
 
@@ -20,34 +20,19 @@ const AuthLogin = () => {
       <form className="mt-8" onSubmit={handleSubmit}>
         <div className="mb-5">
           <div className="mb-2 block">
-            <Label
-              htmlFor="username"
-              className="text-foreground dark:text-slate-100"
-            >
-              Username
-            </Label>
+            <Label htmlFor="email">Email</Label>
           </div>
-          <Input
-            id="username"
-            type="text"
-            required
-            className="h-12 border-border/80 bg-background/80 px-4 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus-visible:border-emerald-400/60 dark:focus-visible:ring-emerald-400/20"
-          />
+          <Input id="email" type="email" required className="custom-input" />
         </div>
         <div className="mb-5">
           <div className="mb-2 block">
-            <Label
-              htmlFor="userpwd"
-              className="text-foreground dark:text-slate-100"
-            >
-              Password
-            </Label>
+            <Label htmlFor="userpwd">Password</Label>
           </div>
           <Input
             id="userpwd"
             type="password"
             required
-            className="h-12 border-border/80 bg-background/80 px-4 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus-visible:border-emerald-400/60 dark:focus-visible:ring-emerald-400/20"
+            className="custom-input"
           />
         </div>
         <div className="my-6 flex flex-wrap items-center justify-between gap-4">
@@ -57,20 +42,17 @@ const AuthLogin = () => {
               htmlFor="accept"
               className="cursor-pointer text-sm font-normal text-muted-foreground opacity-90 dark:text-slate-300"
             >
-              Remember this Device
+              Remember Me
             </Label>
           </div>
-          <Link
+          {/* <Link
             to={"/auth/forgot-password"}
             className="text-sm font-medium text-primary transition-colors hover:text-primary/80 dark:text-emerald-400 dark:hover:text-emerald-300"
           >
             Forgot Password ?
-          </Link>
+          </Link> */}
         </div>
-        <Button
-          type="submit"
-          className="h-12 w-full text-base font-semibold dark:bg-emerald-400 dark:text-slate-950 dark:hover:bg-emerald-300"
-        >
+        <Button type="submit" className="w-full">
           Sign in
         </Button>
       </form>

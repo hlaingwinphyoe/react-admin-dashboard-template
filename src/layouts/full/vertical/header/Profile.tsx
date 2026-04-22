@@ -34,7 +34,7 @@ const Profile = () => {
       <DropdownMenu>
         <DropdownMenuTrigger
           render={
-            <span className="flex size-10 cursor-pointer items-center justify-center rounded-xl border border-white/8 bg-white/[0.02] p-1 transition-colors hover:bg-white/[0.06] hover:text-foreground group-hover/menu:bg-white/[0.06] group-hover/menu:text-foreground">
+            <span className="flex size-10 cursor-pointer items-center justify-center rounded-xl border border-white/8 bg-white/2 p-1 transition-colors hover:bg-white/6 hover:text-foreground group-hover/menu:bg-white/6 group-hover/menu:text-foreground">
               <img
                 src={profileimg}
                 alt="logo"
@@ -78,7 +78,11 @@ const Profile = () => {
           <DropdownMenuSeparator className="my-2" />
 
           <div className="px-4 pt-2">
-            <Button variant="destructive" className="w-full" onClick={handleLogout}>
+            <Button
+              variant="destructive"
+              className="w-full"
+              onClick={handleLogout}
+            >
               <LogOut size={16} />
               Logout
             </Button>

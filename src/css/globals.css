@@ -68,7 +68,6 @@ main {
   --shadow-2xl: 0px 4px 8px -1px hsl(0 0% 0% / 0.25);
   --tracking-normal: 0em;
   --spacing: 0.25rem;
-
 }
 
 .dark {
@@ -127,7 +126,6 @@ main {
   --shadow-xl:
     0px 4px 8px -1px hsl(0 0% 0% / 0.1), 0px 8px 10px -2px hsl(0 0% 0% / 0.1);
   --shadow-2xl: 0px 4px 8px -1px hsl(0 0% 0% / 0.25);
-
 }
 
 @theme inline {
@@ -221,44 +219,12 @@ main {
   }
 
   button {
-    @apply !cursor-pointer;
-  }
-}
-
-@utility form-control {
-  & input {
-    @apply w-full rounded-md border border-border bg-transparent text-sm ring-transparent dark:bg-transparent dark:ring-transparent;
-  }
-
-  & input:focus {
-    @apply border-primary outline-hidden shadow-none ring-offset-0 ring-transparent dark:border-primary dark:shadow-none dark:ring-transparent;
-  }
-}
-
-@utility form-control-textarea {
-  @apply w-full rounded-md border border-border bg-transparent p-4 text-sm dark:bg-transparent;
-
-  &:focus {
-    @apply border-primary outline-hidden shadow-none ring-offset-0 ring-transparent dark:border-primary;
-  }
-}
-
-@utility card-title {
-  @apply text-lg font-semibold text-foreground;
-}
-
-@layer utilities {
-  .left-part {
-    @apply border-e border-border p-6;
+    @apply cursor-pointer!;
   }
 }
 
 @layer components {
-  #fileUpload input {
-    @apply flex items-center gap-4 p-3;
-  }
-
-  .sales-overview select {
-    @apply pr-9!;
+  .custom-input {
+    @apply h-12! border-border/80! bg-background/80! px-4! dark:border-white/10! dark:bg-white/4! dark:text-slate-100! dark:placeholder:text-slate-500! dark:focus-visible:border-primary/60! dark:focus-visible:ring-primary/20!;
   }
 }

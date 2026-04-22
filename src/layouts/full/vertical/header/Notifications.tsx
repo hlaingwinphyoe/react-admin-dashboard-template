@@ -35,11 +35,11 @@ const Notifications = () => {
             <div className="relative border-none outline-none">
               <button
                 type="button"
-                className="flex size-10 items-center justify-center rounded-xl border border-white/8 bg-white/[0.02] text-foreground transition-colors hover:bg-white/[0.06] hover:text-foreground group-hover/menu:bg-white/[0.06] group-hover/menu:text-foreground dark:text-muted-foreground"
+                className="flex size-10 items-center justify-center rounded-xl border border-white/8 bg-white/2 text-foreground transition-colors hover:bg-white/6 hover:text-foreground group-hover/menu:bg-white/6 group-hover/menu:text-foreground dark:text-muted-foreground"
               >
                 <Bell size={20} />
               </button>
-              <span className="rounded-full absolute -end-[2px] -top-[2px] text-[10px] h-2 w-2 bg-primary flex justify-center items-center"></span>
+              <span className="rounded-full absolute inset-end-[-2px] top-[-2px] text-[10px] h-2 w-2 bg-primary flex justify-center items-center"></span>
             </div>
           }
         />
