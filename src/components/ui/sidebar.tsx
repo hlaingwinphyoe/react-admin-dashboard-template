@@ -109,7 +109,7 @@ function SidebarProvider({
           data-slot="sidebar-wrapper"
           data-state={value.state}
           className={cn(
-            "flex min-h-screen w-full bg-slate-950 p-2 text-foreground lg:gap-3 lg:p-3",
+            "flex min-h-screen w-full bg-slate-50 dark:bg-slate-950 p-2 text-foreground lg:gap-3 lg:p-3",
             className,
           )}
         >
@@ -143,7 +143,7 @@ function Sidebar({
         <SheetContent
           side="left"
           showCloseButton={false}
-          className="w-[17rem] border border-sidebar-border bg-sidebar p-0 text-sidebar-foreground shadow-2xl"
+          className="w-[17rem] border-none bg-background p-0 text-sidebar-foreground shadow-2xl"
         >
           <SheetTitle className="sr-only">Application navigation</SheetTitle>
           <div className="flex h-full flex-col">{children}</div>
@@ -157,7 +157,7 @@ function Sidebar({
       data-slot="sidebar"
       data-state={state}
       className={cn(
-        "hidden overflow-hidden rounded-[28px] border border-sidebar-border/80 bg-sidebar/95 text-sidebar-foreground shadow-[0_20px_60px_-24px_rgba(0,0,0,0.7)] backdrop-blur-xl transition-[width] duration-200 lg:flex lg:min-h-[calc(100svh-1.5rem)] lg:flex-col",
+        "hidden overflow-hidden transition-[width] duration-200 lg:flex lg:min-h-[calc(100svh-1.5rem)] lg:flex-col",
         open ? "w-[17rem]" : "w-[4.5rem]",
         className,
       )}
@@ -204,7 +204,7 @@ function SidebarInset({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="sidebar-inset"
       className={cn(
-        "flex min-h-[calc(100svh-1rem)] min-w-0 flex-1 flex-col overflow-hidden rounded-[28px] border border-white/8 bg-background shadow-[0_24px_60px_-28px_rgba(0,0,0,0.75)] lg:min-h-[calc(100svh-1.5rem)]",
+        "flex min-h-[calc(100svh-1rem)] min-w-0 flex-1 flex-col overflow-hidden rounded-[24px] bg-background shadow-[0_24px_60px_-28px_rgba(0,0,0,0.75)] lg:min-h-[calc(100svh-1.5rem)]",
         className,
       )}
       {...props}
@@ -216,10 +216,7 @@ function SidebarHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="sidebar-header"
-      className={cn(
-        "flex flex-col gap-3 border-b border-sidebar-border/80 px-4 py-3",
-        className,
-      )}
+      className={cn("flex flex-col gap-3 px-4 py-3", className)}
       {...props}
     />
   );
@@ -242,7 +239,7 @@ function SidebarFooter({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="sidebar-footer"
-      className={cn("border-t border-sidebar-border/80 p-3", className)}
+      className={cn("p-3", className)}
       {...props}
     />
   );

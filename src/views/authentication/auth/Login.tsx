@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 
-import AuthLogin from "../authforms/AuthLogin";
-import SocialButtons from "../authforms/SocialButtons";
+import AuthLogin from "../components/AuthLogin";
+import SocialButtons from "../components/SocialButtons";
 
 import FullLogo from "@/layouts/full/shared/logo/FullLogo";
 

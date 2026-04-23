@@ -31,23 +31,21 @@ const Notifications = () => {
     <div className="relative group/menu px-1">
       <DropdownMenu>
         <DropdownMenuTrigger
+          nativeButton={false}
           render={
             <div className="relative border-none outline-none">
               <button
                 type="button"
-                className="flex size-10 items-center justify-center rounded-xl border border-white/8 bg-white/2 text-foreground transition-colors hover:bg-white/6 hover:text-foreground group-hover/menu:bg-white/6 group-hover/menu:text-foreground dark:text-muted-foreground"
+                className="flex size-10 items-center justify-center rounded-xl border border-border bg-white dark:bg-white/2 text-foreground transition-colors hover:bg-muted group-hover/menu:bg-muted dark:text-muted-foreground"
               >
                 <Bell size={20} />
               </button>
-              <span className="rounded-full absolute inset-end-[-2px] top-[-2px] text-[10px] h-2 w-2 bg-primary flex justify-center items-center"></span>
+              <span className="rounded-full absolute end-[-2px] top-[-2px] text-[10px] h-2 w-2 bg-primary flex justify-center items-center"></span>
             </div>
           }
         />
 
-        <DropdownMenuContent
-          align="end"
-          className="w-screen rounded-2xl border border-border py-4 shadow-md sm:w-[300px]"
-        >
+        <DropdownMenuContent align="end" className="w-screen sm:w-[300px]">
           <div className="flex items-center justify-between px-4">
             <h3 className="mb-0 text-lg font-semibold text-foreground">
               Notifications
@@ -85,7 +83,7 @@ const Notifications = () => {
             ))}
           </div>
 
-          <div className="px-4 pt-4">
+          <div className="pt-4">
             <Button variant={"outline"} className="w-full">
               View all notifications
             </Button>

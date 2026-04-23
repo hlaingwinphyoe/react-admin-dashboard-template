@@ -20,10 +20,10 @@ const Header = () => {
   );
 
   return (
-    <header className="sticky top-0 z-30 border-b border-white/8 bg-background/92 backdrop-blur-xl">
+    <header className="sticky top-0 z-30 border-b border-slate-200/80 bg-background/92 backdrop-blur-xl dark:border-white/8">
       <div className="flex min-h-16 items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
         <div className="flex min-w-0 items-center gap-3">
-          <SidebarTrigger className="size-10 shrink-0 rounded-xl border border-white/8 bg-white/2 text-foreground hover:bg-white/6 hover:text-foreground" />
+          <SidebarTrigger className="size-10 shrink-0 rounded-xl border border-border bg-white dark:bg-white/2 text-foreground hover:bg-muted" />
           <div className="h-6 w-px shrink-0 bg-border/80" />
           <div className="min-w-0">
             <h1 className="truncate text-lg font-semibold tracking-tight sm:text-xl">
@@ -36,7 +36,7 @@ const Header = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="size-10 rounded-xl border border-white/8 bg-white/2 text-foreground hover:bg-white/6 hover:text-foreground"
+            className="size-10 rounded-xl border border-border bg-white dark:bg-white/2 text-foreground hover:bg-muted"
             onClick={() => setTheme(theme === "light" ? "dark" : "light")}
           >
             {theme === "light" ? (

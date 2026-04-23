@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import AuthForgotPassword from "../authforms/AuthForgotPassword";
+import AuthForgotPassword from "../components/AuthForgotPassword";
 import FullLogo from "@/layouts/full/shared/logo/FullLogo";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";

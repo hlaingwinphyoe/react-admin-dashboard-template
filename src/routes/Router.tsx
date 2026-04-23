@@ -14,9 +14,9 @@ const ForgotPassword = Loadable(
 );
 
 // Dashboard & Pages
-const Dashboard = Loadable(lazy(() => import("@/views/dashboard/dashboard")));
+const Dashboard = Loadable(lazy(() => import("@/views/dashboard/Dashboard")));
 const UserProfile = Loadable(
-  lazy(() => import("@/views/pages/user-profile/UserProfile")),
+  lazy(() => import("@/views/user-profile/UserProfile")),
 );
 const Error = Loadable(lazy(() => import("@/views/authentication/Error")));
 

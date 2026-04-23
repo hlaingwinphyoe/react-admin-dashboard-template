@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { useAuthStore } from "@/store/authStore";
+import { useAuthStore } from "@/store/auth-store";
 
 const profileItems: ProfileMenuItem[] = [
   {
@@ -33,8 +33,9 @@ const Profile = () => {
     <div className="relative group/menu shrink-0 ps-1">
       <DropdownMenu>
         <DropdownMenuTrigger
+          nativeButton={false}
           render={
-            <span className="flex size-10 cursor-pointer items-center justify-center rounded-xl border border-white/8 bg-white/2 p-1 transition-colors hover:bg-white/6 hover:text-foreground group-hover/menu:bg-white/6 group-hover/menu:text-foreground">
+            <span className="flex size-10 cursor-pointer items-center justify-center rounded-xl border border-border bg-white dark:bg-white/2 p-1 transition-colors hover:bg-muted group-hover/menu:bg-muted">
               <img
                 src={profileimg}
                 alt="logo"
@@ -48,7 +49,7 @@ const Profile = () => {
 
         <DropdownMenuContent
           align="end"
-          className="w-screen rounded-2xl pb-4 pt-3 shadow-md sm:w-[220px]"
+          className="w-screen sm:w-[220px]"
         >
           <div className="custom-scroll max-h-[300px] overflow-auto">
             {profileItems.map((items, index) => (
@@ -57,7 +58,7 @@ const Profile = () => {
                 render={
                   <Link
                     to={items.url}
-                    className="group/link flex w-full items-center justify-between px-4 py-2 transition-colors hover:bg-accent hover:text-accent-foreground hover:outline-none"
+                    className="group/link flex w-full items-center justify-between px-3 py-2.5 cursor-pointer transition-colors hover:bg-accent hover:text-accent-foreground hover:outline-none rounded-xl"
                   />
                 }
               >
@@ -77,10 +78,10 @@ const Profile = () => {
 
           <DropdownMenuSeparator className="my-2" />
 
-          <div className="px-4 pt-2">
+          <div className="pt-2">
             <Button
               variant="destructive"
-              className="w-full"
+              className="w-full h-10"
               onClick={handleLogout}
             >
               <LogOut size={16} />

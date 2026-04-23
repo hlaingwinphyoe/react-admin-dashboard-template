@@ -26,7 +26,7 @@ function SidebarBrand() {
     <Link
       to="/"
       className={cn(
-        "flex w-full items-center overflow-hidden rounded-2xl px-3 py-2 transition-colors",
+        "flex w-full items-center overflow-hidden rounded-2xl px-3 py-0 transition-colors",
         showFullBrand ? "justify-start gap-3" : "justify-center px-0",
       )}
     >
@@ -48,14 +48,14 @@ function SidebarBrand() {
             <img
               src={LogoMark}
               alt="logo"
-              className="h-4 w-4 rounded-lg object-cover object-left"
+              className="h-7 w-7 rounded-lg object-cover object-left"
             />
           )}
         </div>
         {showFullBrand && (
           <div className="min-w-0">
             <p className="truncate text-base font-semibold text-sidebar-foreground">
-              Acme Inc.
+              Admin Dashboard
             </p>
             <p className="truncate text-xs text-sidebar-foreground/50">
               Workspace
