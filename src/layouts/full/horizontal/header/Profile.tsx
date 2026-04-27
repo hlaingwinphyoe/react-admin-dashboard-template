@@ -1,6 +1,5 @@
-import { LogOut, User } from "lucide-react";
+import { ChevronDown, LogOut, User } from "lucide-react";
 import { Link, useNavigate } from "react-router";
-import profileimg from "@/assets/images/profile/user-1.jpg";
 import type { ProfileMenuItem } from "@/types/header";
 import {
   DropdownMenu,
@@ -22,7 +21,7 @@ const profileItems: ProfileMenuItem[] = [
 
 const Profile = () => {
   const navigate = useNavigate();
-  const logout = useAuthStore((state) => state.logout);
+  const { logout, user } = useAuthStore();
 
   const handleLogout = () => {
     logout();
@@ -35,22 +34,40 @@ const Profile = () => {
         <DropdownMenuTrigger
           nativeButton={false}
           render={
-            <span className="flex size-10 cursor-pointer items-center justify-center rounded-xl border border-border bg-white dark:bg-white/2 p-1 transition-colors hover:bg-muted group-hover/menu:bg-muted">
-              <img
-                src={profileimg}
-                alt="logo"
-                height="35"
-                width="35"
-                className="rounded-full"
+            <div className="group cursor-pointer flex w-full items-center gap-3 rounded-xl border border-border bg-white dark:bg-white/5 px-2 py-px shadow-sm transition-all duration-200 hover:bg-muted hover:shadow-md">
+              {/* Avatar */}
+              {user?.profile_image ? (
+                <img
+                  src={user.profile_image}
+                  alt="profile"
+                  className="h-8 w-8 rounded-full object-cover ring-1 ring-border"
+                />
+              ) : (
+                <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center text-primary text-xs font-bold ring-1 ring-border">
+                  {user?.name?.charAt(0).toUpperCase() || "U"}
+                </div>
+              )}
+
+              {/* User Info */}
+              <div className="flex flex-col leading-tight">
+                <h4 className="text-sm font-medium text-foreground">
+                  {user?.name || "Guest"}
+                </h4>
+                <span className="text-xs text-muted-foreground truncate max-w-[140px]">
+                  {user?.email}
+                </span>
+              </div>
+
+              {/* Icon */}
+              <ChevronDown
+                size={16}
+                className="ml-auto text-muted-foreground transition-transform duration-200 group-hover:rotate-180"
               />
-            </span>
+            </div>
           }
         />
 
-        <DropdownMenuContent
-          align="end"
-          className="w-screen sm:w-[220px]"
-        >
+        <DropdownMenuContent align="end" className="w-screen sm:w-[220px]">
           <div className="custom-scroll max-h-[300px] overflow-auto">
             {profileItems.map((items, index) => (
               <DropdownMenuItem
@@ -78,16 +95,14 @@ const Profile = () => {
 
           <DropdownMenuSeparator className="my-2" />
 
-          <div className="pt-2">
-            <Button
-              variant="destructive"
-              className="w-full h-10"
-              onClick={handleLogout}
-            >
-              <LogOut size={16} />
-              Logout
-            </Button>
-          </div>
+          <Button
+            variant="destructive"
+            className="w-full"
+            onClick={handleLogout}
+          >
+            <LogOut size={16} />
+            Logout
+          </Button>
         </DropdownMenuContent>
       </DropdownMenu>
     </div>

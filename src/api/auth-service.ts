@@ -23,7 +23,16 @@ export const authService = {
   },
 
   getUserProfile: async (): Promise<ApiResponse<AdminUser>> => {
-    const response = await api.get("/auth/me");
+    const response = await api.get("/auth/profile");
+    return response.data;
+  },
+
+  updateProfile: async (data: FormData): Promise<ApiResponse<AdminUser>> => {
+    const response = await api.patch("/auth/update-profile", data, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
     return response.data;
   },
 };

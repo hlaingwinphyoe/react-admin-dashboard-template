@@ -50,7 +50,7 @@ const Notifications = () => {
             <h3 className="mb-0 text-lg font-semibold text-foreground">
               Notifications
             </h3>
-            <Badge variant={"primary"}>2 new</Badge>
+            <Badge variant={"destructive"}>2 new</Badge>
           </div>
 
           <div className="custom-scroll mt-3 max-h-80 overflow-auto">

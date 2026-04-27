@@ -10,11 +10,9 @@ const AuthForgotPassword = () => {
           <div className="mb-2 block">
             <Label htmlFor="emadd">Email Address</Label>
           </div>
-          <Input id="emadd" type="text" className="custom-input" />
+          <Input id="emadd" type="text" />
         </div>
-        <Button className="h-12 w-full text-base font-semibold dark:bg-emerald-400 dark:text-slate-950 dark:hover:bg-emerald-300">
-          Forgot Password
-        </Button>
+        <Button className="w-full h-10">Forgot Password</Button>
       </form>
     </>
   );

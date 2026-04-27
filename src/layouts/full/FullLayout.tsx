@@ -4,10 +4,19 @@ import { Outlet } from "react-router";
 import ScrollToTop from "@/components/shared/ScrollToTop";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 
-import Header from "./vertical/header/Header";
-import Sidebar from "./vertical/sidebar/Sidebar";
+import Header from "./horizontal/header/Header";
+import Sidebar from "./horizontal/sidebar/Sidebar";
+
+import { useEffect } from "react";
+import { useAuthStore } from "@/store/auth-store";
 
 const FullLayout: FC = () => {
+  const fetchProfile = useAuthStore((state) => state.fetchProfile);
+
+  useEffect(() => {
+    fetchProfile();
+  }, [fetchProfile]);
+
   return (
     <SidebarProvider defaultOpen>
       <Sidebar />

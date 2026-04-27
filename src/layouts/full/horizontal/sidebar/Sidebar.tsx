@@ -26,8 +26,8 @@ function SidebarBrand() {
     <Link
       to="/"
       className={cn(
-        "flex w-full items-center overflow-hidden rounded-2xl px-3 py-0 transition-colors",
-        showFullBrand ? "justify-start gap-3" : "justify-center px-0",
+        "flex w-full items-center overflow-hidden rounded-2xl px-4 py-1 transition-colors",
+        showFullBrand ? "justify-start gap-4" : "justify-center px-0",
       )}
     >
       <div
@@ -39,7 +39,7 @@ function SidebarBrand() {
         <div
           className={cn(
             "flex shrink-0 items-center justify-center bg-white/3 ring-1 ring-white/8",
-            showFullBrand ? "size-12 rounded-2xl" : "size-10 rounded-xl",
+            showFullBrand ? "size-14 rounded-2xl" : "size-12 rounded-xl",
           )}
         >
           {showFullBrand ? (
@@ -88,8 +88,8 @@ const Sidebar = () => {
   }, []);
 
   return (
-    <AppSidebarShell>
-      <SidebarHeader className="gap-4">
+    <AppSidebarShell collapsible="icon">
+      <SidebarHeader className="gap-6">
         <SidebarBrand />
       </SidebarHeader>
 
@@ -100,27 +100,28 @@ const Sidebar = () => {
             <SidebarGroupContent>
               <SidebarMenu>
                 {section.items.map((item) => {
-                  const isActive = location.pathname === item.url;
+                  const isActive =
+                    location.pathname === item.url ||
+                    (item.url !== "/" &&
+                      location.pathname.startsWith(item.url + "/"));
                   const Icon = item.icon;
 
                   return (
                     <SidebarMenuItem key={item.url}>
                       <SidebarMenuButton
-                        asChild
+                        render={<Link to={item.url} />}
                         isActive={isActive}
                         tooltip={item.title}
                       >
-                        <Link to={item.url}>
-                          <Icon className="size-4 shrink-0" />
-                          <div
-                            className={cn(
-                              "min-w-0 flex-1 truncate",
-                              !showContent && "hidden",
-                            )}
-                          >
-                            {item.title}
-                          </div>
-                        </Link>
+                        <Icon className="size-5 shrink-0" />
+                        <div
+                          className={cn(
+                            "min-w-0 flex-1 truncate",
+                            !showContent && "hidden",
+                          )}
+                        >
+                          {item.title}
+                        </div>
                       </SidebarMenuButton>
                     </SidebarMenuItem>
                   );

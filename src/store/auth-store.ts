@@ -20,6 +20,8 @@ interface AuthState {
   login: (credentials: LoginCredentials) => Promise<void>;
   logout: () => Promise<void>;
   refreshToken: () => Promise<void>;
+  updateProfile: (data: FormData) => Promise<void>;
+  fetchProfile: () => Promise<void>;
   clearAuth: () => void;
 }
 
@@ -82,6 +84,30 @@ export const useAuthStore = create<AuthState>()(
         } catch (error) {
           get().clearAuth();
           throw error;
+        }
+      },
+
+      updateProfile: async (data) => {
+        try {
+          set({ isLoading: true, error: null });
+          const response = await authService.updateProfile(data);
+          set({ user: response.data });
+        } catch (error: any) {
+          const errorMessage =
+            error.response?.data?.message || "Update failed";
+          set({ error: errorMessage });
+          throw error;
+        } finally {
+          set({ isLoading: false });
+        }
+      },
+      
+      fetchProfile: async () => {
+        try {
+          const response = await authService.getUserProfile();
+          set({ user: response.data });
+        } catch (error) {
+          console.error("Failed to fetch profile:", error);
         }
       },
 

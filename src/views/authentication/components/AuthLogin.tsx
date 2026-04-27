@@ -52,7 +52,6 @@ const AuthLogin = () => {
             id="email"
             type="email"
             placeholder="Enter your email"
-            className="custom-input"
             {...register("email")}
           />
           <FieldError errors={errors.email ? [errors.email] : undefined} />
@@ -64,7 +63,6 @@ const AuthLogin = () => {
             id="password"
             type="password"
             placeholder="Enter your password"
-            className="custom-input"
             {...register("password")}
           />
           <FieldError
@@ -75,16 +73,11 @@ const AuthLogin = () => {
         <div className="flex items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <Checkbox id="remember" />
-            <Label
-              htmlFor="remember"
-              className="cursor-pointer text-sm font-normal text-muted-foreground opacity-90 dark:text-slate-300"
-            >
-              Remember Me
-            </Label>
+            <Label htmlFor="remember">Remember Me</Label>
           </div>
         </div>
 
-        <Button type="submit" className="w-full h-11" disabled={isLoading}>
+        <Button type="submit" className="w-full" disabled={isLoading}>
           {isLoading ? "Signing in..." : "Sign in"}
         </Button>
       </form>
