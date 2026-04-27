@@ -2,6 +2,7 @@ import { lazy } from "react";
 import { Navigate, createBrowserRouter } from "react-router";
 import Loadable from "@/layouts/full/shared/loadable/Loadable";
 import { ProtectedRoute, PublicRoute } from "@/components/shared/AuthGuards";
+import RouteErrorElement from "@/components/shared/RouteErrorElement";
 
 /* ***Layouts**** */
 const FullLayout = Loadable(lazy(() => import("@/layouts/full/FullLayout")));
@@ -13,24 +14,48 @@ const ForgotPassword = Loadable(
   lazy(() => import("@/views/authentication/auth/ForgotPassword")),
 );
 
-// Dashboard & Pages
-const Dashboard = Loadable(lazy(() => import("@/views/dashboard/Dashboard")));
-const UserProfile = Loadable(
-  lazy(() => import("@/views/user-profile/UserProfile")),
+// Home
+const Dashboard = Loadable(lazy(() => import("@/views/home/Dashboard")));
+
+// Payment
+const DepositIndex = Loadable(
+  lazy(() => import("@/views/payment/deposit/DepositIndex")),
 );
+const WithdrawalIndex = Loadable(
+  lazy(() => import("@/views/payment/withdrawal/WithdrawalIndex")),
+);
+const PaymentAccountIndex = Loadable(
+  lazy(() => import("@/views/payment/account/PaymentAccountIndex")),
+);
+
+// Profile Settings
+const UserProfile = Loadable(
+  lazy(() => import("@/views/user-settings/UserProfile")),
+);
+
+// Error
 const Error = Loadable(lazy(() => import("@/views/authentication/Error")));
 
 const Router = [
   {
     path: "/",
     element: <ProtectedRoute />,
+    errorElement: <RouteErrorElement />,
     children: [
       {
         path: "/",
         element: <FullLayout />,
         children: [
           { index: true, element: <Dashboard /> },
-          { path: "/user-profile", element: <UserProfile /> },
+
+          // payment
+          { path: "/deposits", element: <DepositIndex /> },
+          { path: "/withdrawals", element: <WithdrawalIndex /> },
+          { path: "/payment-accounts", element: <PaymentAccountIndex /> },
+
+          // user settings
+          { path: "/profile", element: <UserProfile /> },
+
           { path: "*", element: <Navigate to="/auth/404" /> },
         ],
       },
@@ -39,6 +64,7 @@ const Router = [
   {
     path: "/auth",
     element: <PublicRoute />,
+    errorElement: <RouteErrorElement />,
     children: [
       {
         path: "/auth",

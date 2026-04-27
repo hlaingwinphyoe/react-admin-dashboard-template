@@ -33,7 +33,13 @@ export default defineConfig({
   build: {
     outDir: "dist",
   },
-  plugins: [react()],
+  plugins: [
+    react({
+      babel: {
+        plugins: [["babel-plugin-react-compiler", { target: "19" }]],
+      },
+    }),
+  ],
   server: {
     port: 3000,
     host: "0.0.0.0",
