@@ -14,6 +14,7 @@ import {
   InputGroupAddon,
   InputGroupInput,
 } from "@/components/ui/input-group";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 type ProfileFormValues = z.infer<typeof profileSchema>;
 
@@ -123,17 +124,16 @@ const UserProfile = () => {
             <CardContent className="flex flex-col items-center pt-0 pb-8">
               <div className="relative">
                 <div className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden border-4 border-background shadow-md ring-1 ring-border group transition-all duration-300 hover:ring-primary/40">
-                  {imageSrc ? (
-                    <img
+                  <Avatar className="w-full h-full">
+                    <AvatarImage
                       src={imageSrc}
                       alt="Profile"
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
                     />
-                  ) : (
-                    <div className="w-full h-full bg-primary/5 flex items-center justify-center text-primary text-5xl font-bold">
+                    <AvatarFallback className="bg-primary/5 text-primary text-5xl font-bold rounded-full">
                       {user?.name?.charAt(0).toUpperCase()}
-                    </div>
-                  )}
+                    </AvatarFallback>
+                  </Avatar>
 
                   {/* Overlay on hover for selection */}
                   <div
@@ -148,7 +148,7 @@ const UserProfile = () => {
                   type="button"
                   size="icon"
                   variant="default"
-                  className="absolute bottom-1 right-1 h-10 w-10 rounded-full shadow-lg border-2 border-background bg-primary hover:bg-primary/90"
+                  className="absolute bottom-1 right-1 size-10 rounded-full! shadow-lg border-2 border-background bg-primary hover:bg-primary/90"
                   onClick={() => fileInputRef.current?.click()}
                 >
                   <Camera className="w-5 h-5 text-primary-foreground" />

@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { useAuthStore } from "@/store/auth-store";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const profileItems: ProfileMenuItem[] = [
   {
@@ -36,17 +37,16 @@ const Profile = () => {
           render={
             <div className="group cursor-pointer flex w-full items-center gap-3 rounded-xl border border-border bg-white dark:bg-white/5 px-2 py-px shadow-sm transition-all duration-200 hover:bg-muted hover:shadow-md">
               {/* Avatar */}
-              {user?.profile_image ? (
-                <img
-                  src={user.profile_image}
-                  alt="profile"
-                  className="h-8 w-8 rounded-full object-cover ring-1 ring-border"
+              <Avatar className="h-8 w-8 ring-1 ring-border">
+                <AvatarImage
+                  src={user?.profile_image || undefined}
+                  alt={user?.name ?? "User avatar"}
+                  className="object-cover"
                 />
-              ) : (
-                <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center text-primary text-xs font-bold ring-1 ring-border">
-                  {user?.name?.charAt(0).toUpperCase() || "U"}
-                </div>
-              )}
+                <AvatarFallback className="bg-primary/10 text-primary text-xs font-bold">
+                  {user?.name?.charAt(0).toUpperCase() ?? "U"}
+                </AvatarFallback>
+              </Avatar>
 
               {/* User Info */}
               <div className="flex flex-col leading-tight">
