@@ -2,6 +2,19 @@
 
 **Admin Dashboard Template**!
 
+## Tech Stack
+
+- Vite
+- React
+- TypeScript
+- Tailwind CSS
+- Shadcn UI
+- Tanstack Query
+- Zustand
+- React Hook Form
+- Zod
+- React Router
+
 ### 📝 Steps to Install
 
 #### 1. **Clone The Repository**
@@ -26,11 +39,6 @@ npm install
 
 ```bash
 npm run dev
-```
-
-For Angular
-```bash
-ng serve
 ```
 ---
 
