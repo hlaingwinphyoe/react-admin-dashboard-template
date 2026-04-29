@@ -1,5 +1,5 @@
 import type { LucideIcon } from "lucide-react";
-import { LayoutDashboard, UserRound } from "lucide-react";
+import { LayoutDashboard, UserCog } from "lucide-react";
 
 export type SidebarItem = {
   section: string;
@@ -21,7 +21,7 @@ const sidebarItems: SidebarItem[] = [
     section: "User Settings",
     title: "Profile",
     url: "/profile",
-    icon: UserRound,
+    icon: UserCog,
   },
 ];
 

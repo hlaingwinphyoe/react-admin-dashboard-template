@@ -19,7 +19,7 @@ const Dashboard = Loadable(lazy(() => import("@/views/home/Dashboard")));
 
 // Profile Settings
 const UserProfile = Loadable(
-  lazy(() => import("@/views/user-setting/UserProfile")),
+  lazy(() => import("@/views/profile-settings/UserProfile")),
 );
 
 // Error
