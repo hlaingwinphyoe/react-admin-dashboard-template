@@ -1,6 +1,6 @@
 ## 💾 Installation Guide
 
-**Admin Dashboard Template**!
+**Admin Dashboard For BFS**!
 
 ## Tech Stack
 
@@ -20,16 +20,28 @@
 #### 1. **Clone The Repository**
 
 ```bash
-git clone https://github.com/hlaingwinphyoe/react-admin-dashboard-template
+git clone https://github.com/ninety-four-group/bfs-admin.git
 ```
 
 #### 2. **Select A Technology Version**
 
 ```bash
-cd ./react-admin-dashboard-template
+cd ./bfs-admin
 ```
 
-#### 3. **Install Dependencies**
+#### 3. **Environment Variables**
+
+```bash
+cp .env.example .env
+```
+
+Edit `.env` file and add the following environment variables:
+
+| Variable            | Description                | Example Value                     |
+| ------------------- | -------------------------- | --------------------------------- |
+| `VITE_BASE_API_URL` | Base URL for API requests. | `http://localhost:8000/api` |
+
+#### 4. **Install Dependencies**
 
 ```bash
 npm install
@@ -40,8 +52,5 @@ npm install
 ```bash
 npm run dev
 ```
----
-
-## 📝 Documentation
 
 ---

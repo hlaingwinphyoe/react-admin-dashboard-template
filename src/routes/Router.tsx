@@ -17,20 +17,9 @@ const ForgotPassword = Loadable(
 // Home
 const Dashboard = Loadable(lazy(() => import("@/views/home/Dashboard")));
 
-// Payment
-const DepositIndex = Loadable(
-  lazy(() => import("@/views/payment/deposit/DepositIndex")),
-);
-const WithdrawalIndex = Loadable(
-  lazy(() => import("@/views/payment/withdrawal/WithdrawalIndex")),
-);
-const PaymentAccountIndex = Loadable(
-  lazy(() => import("@/views/payment/account/PaymentAccountIndex")),
-);
-
 // Profile Settings
 const UserProfile = Loadable(
-  lazy(() => import("@/views/user-settings/UserProfile")),
+  lazy(() => import("@/views/user-setting/UserProfile")),
 );
 
 // Error
@@ -47,11 +36,6 @@ const Router = [
         element: <FullLayout />,
         children: [
           { index: true, element: <Dashboard /> },
-
-          // payment
-          { path: "/deposits", element: <DepositIndex /> },
-          { path: "/withdrawals", element: <WithdrawalIndex /> },
-          { path: "/payment-accounts", element: <PaymentAccountIndex /> },
 
           // user settings
           { path: "/profile", element: <UserProfile /> },

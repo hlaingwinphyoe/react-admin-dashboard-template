@@ -21,4 +21,21 @@ export const profileSchema = z.object({
     .min(8, "Phone number must be at least 8 characters")
     .nullable()
     .or(z.literal("")),
+  profile_image: z
+    .union([z.instanceof(File), z.string(), z.null()])
+    .optional()
+    .refine(
+      (file) => {
+        if (!(file instanceof File)) return true;
+        return file.size <= 2 * 1024 * 1024;
+      },
+      { message: "Image must be less than 2MB" },
+    )
+    .refine(
+      (file) => {
+        if (!(file instanceof File)) return true;
+        return file.type.startsWith("image/");
+      },
+      { message: "File must be an image" },
+    ),
 });

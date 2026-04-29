@@ -75,7 +75,7 @@ const Profile = () => {
                 render={
                   <Link
                     to={items.url}
-                    className="group/link flex w-full items-center justify-between px-3 py-2.5 cursor-pointer transition-colors hover:bg-accent hover:text-accent-foreground hover:outline-none rounded-xl"
+                    className="group/link flex w-full items-center justify-between px-3 py-2 cursor-pointer transition-colors hover:bg-accent hover:text-accent-foreground hover:outline-none rounded-xl"
                   />
                 }
               >

@@ -7,7 +7,13 @@ import {
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { PaginationMeta } from "@/types";
-import { NativeSelect } from "./native-select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./select";
 
 interface PaginationProps {
   meta: PaginationMeta;
@@ -24,20 +30,55 @@ const Pagination = ({
 }: PaginationProps) => {
   const { current_page, last_page, from, to, total, per_page } = meta;
 
-  // Calculate page numbers to show (max 5)
-  const getPageNumbers = () => {
-    const pages = [];
-    let startPage = Math.max(1, current_page - 2);
-    const endPage = Math.min(last_page, startPage + 4);
+  // Calculate page items to show (including dots)
+  const getPageItems = () => {
+    const items: (number | "dots")[] = [];
 
-    if (endPage - startPage < 4) {
-      startPage = Math.max(1, endPage - 4);
+    if (last_page <= 7) {
+      for (let i = 1; i <= last_page; i++) {
+        items.push(i);
+      }
+      return items;
     }
 
-    for (let i = startPage; i <= endPage; i++) {
-      pages.push(i);
+    // Always show page 1
+    items.push(1);
+
+    if (current_page > 3) {
+      items.push("dots");
     }
-    return pages;
+
+    // Determine range around current page
+    let start = Math.max(2, current_page - 1);
+    let end = Math.min(last_page - 1, current_page + 1);
+
+    // Adjust if near boundaries to keep consistent number of items if possible
+    if (current_page <= 3) {
+      end = 4;
+    }
+    if (current_page >= last_page - 2) {
+      start = last_page - 3;
+    }
+
+    for (let i = start; i <= end; i++) {
+      if (!items.includes(i)) {
+        items.push(i);
+      }
+    }
+
+    if (current_page < last_page - 2) {
+      if (!items.includes("dots" as any)) {
+        // This check is a bit redundant with current logic but good for safety
+      }
+      items.push("dots");
+    }
+
+    // Always show last page
+    if (!items.includes(last_page)) {
+      items.push(last_page);
+    }
+
+    return items;
   };
 
   return (
@@ -55,18 +96,23 @@ const Pagination = ({
 
       <div className="flex flex-wrap items-center gap-2 sm:gap-4">
         <div className="flex items-center gap-2">
-          <NativeSelect
+          <Select
             value={per_page.toString()}
-            onChange={(e) => onPerPageChange(Number(e.target.value))}
-            className="h-9 w-20"
+            onValueChange={(v) => onPerPageChange(Number(v))}
           >
-            <option value="10">10</option>
-            <option value="25">25</option>
-            <option value="50">50</option>
-            <option value="100">100</option>
-          </NativeSelect>
+            <SelectTrigger className="h-9 w-20">
+              <SelectValue placeholder={per_page.toString()} />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="10">10</SelectItem>
+              <SelectItem value="25">25</SelectItem>
+              <SelectItem value="50">50</SelectItem>
+              <SelectItem value="100">100</SelectItem>
+            </SelectContent>
+          </Select>
           <span className="whitespace-nowrap text-sm text-muted-foreground">
-            Page <span className="font-medium text-foreground">{current_page}</span>{" "}
+            Page{" "}
+            <span className="font-medium text-foreground">{current_page}</span>{" "}
             of <span className="font-medium text-foreground">{last_page}</span>
           </span>
         </div>
@@ -74,8 +120,7 @@ const Pagination = ({
         <div className="flex items-center gap-1">
           <Button
             variant="outline"
-            size="icon"
-            className="size-9 rounded-lg"
+            size="icon-lg"
             onClick={() => onPageChange(1)}
             disabled={current_page === 1}
           >
@@ -83,33 +128,44 @@ const Pagination = ({
           </Button>
           <Button
             variant="outline"
-            size="icon"
-            className="size-9 rounded-lg"
+            size="icon-lg"
             onClick={() => onPageChange(current_page - 1)}
             disabled={current_page === 1}
           >
             <ChevronLeft className="size-4" />
           </Button>
 
-          {getPageNumbers().map((pageNum) => (
-            <Button
-              key={pageNum}
-              variant={current_page === pageNum ? "default" : "outline"}
-              size="icon"
-              className={cn(
-                "size-9 rounded-lg",
-                current_page === pageNum && "bg-primary text-primary-foreground",
-              )}
-              onClick={() => onPageChange(pageNum)}
-            >
-              {pageNum}
-            </Button>
-          ))}
+          {getPageItems().map((item, index) => {
+            if (item === "dots") {
+              return (
+                <span
+                  key={`dots-${index}`}
+                  className="flex size-9 items-center justify-center text-muted-foreground"
+                >
+                  ...
+                </span>
+              );
+            }
+
+            return (
+              <Button
+                key={item}
+                variant={current_page === item ? "default" : "outline"}
+                size="icon-lg"
+                className={cn(
+                  "size-9 rounded-lg",
+                  current_page === item && "bg-primary text-primary-foreground",
+                )}
+                onClick={() => onPageChange(item)}
+              >
+                {item}
+              </Button>
+            );
+          })}
 
           <Button
             variant="outline"
-            size="icon"
-            className="size-9 rounded-lg"
+            size="icon-lg"
             onClick={() => onPageChange(current_page + 1)}
             disabled={current_page === last_page}
           >
@@ -117,8 +173,7 @@ const Pagination = ({
           </Button>
           <Button
             variant="outline"
-            size="icon"
-            className="size-9 rounded-lg"
+            size="icon-lg"
             onClick={() => onPageChange(last_page)}
             disabled={current_page === last_page}
           >

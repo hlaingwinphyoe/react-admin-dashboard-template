@@ -31,6 +31,8 @@ const UserProfile = () => {
   const {
     register,
     handleSubmit,
+    setValue,
+    trigger,
     formState: { errors, isDirty },
     reset,
   } = useForm<ProfileFormValues>({
@@ -52,19 +54,13 @@ const UserProfile = () => {
     });
   }, [user, reset]);
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    if (!file.type.startsWith("image/")) {
-      toast.error("Please select an image file.");
-      return;
-    }
-
-    if (file.size > 2 * 1024 * 1024) {
-      toast.error("Image size should be less than 2MB.");
-      return;
-    }
+    setValue("profile_image", file, { shouldDirty: true });
+    const isValid = await trigger("profile_image");
+    if (!isValid) return;
 
     if (previewImage?.startsWith("blob:")) {
       URL.revokeObjectURL(previewImage);
@@ -105,7 +101,7 @@ const UserProfile = () => {
     <div className="container max-w-5xl py-8 px-4 sm:px-6 lg:px-8">
       <div className="mb-10">
         <h1 className="text-3xl font-bold tracking-tight text-foreground">
-          User Profile
+          Profile Information
         </h1>
         <p className="text-muted-foreground mt-1">
           Update your personal details and account settings.
@@ -162,6 +158,11 @@ const UserProfile = () => {
                   className="hidden"
                 />
               </div>
+              {errors.profile_image && (
+                <FieldError className="mt-2 text-center">
+                  {errors.profile_image.message}
+                </FieldError>
+              )}
 
               <div className="mt-6 text-center">
                 <p className="text-lg font-medium text-foreground">

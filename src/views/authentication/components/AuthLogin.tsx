@@ -37,7 +37,7 @@ const AuthLogin = () => {
   return (
     <>
       <form
-        className="mt-8 flex flex-col gap-6"
+        className="mt-4 flex flex-col gap-6"
         onSubmit={handleSubmit(onSubmit)}
       >
         {apiError && (
@@ -52,6 +52,7 @@ const AuthLogin = () => {
             id="email"
             type="email"
             placeholder="Enter your email"
+            className="h-11"
             {...register("email")}
           />
           <FieldError errors={errors.email ? [errors.email] : undefined} />
@@ -63,6 +64,7 @@ const AuthLogin = () => {
             id="password"
             type="password"
             placeholder="Enter your password"
+            className="h-11"
             {...register("password")}
           />
           <FieldError
@@ -77,7 +79,11 @@ const AuthLogin = () => {
           </div>
         </div>
 
-        <Button type="submit" className="w-full" disabled={isLoading}>
+        <Button
+          type="submit"
+          className="w-full h-11 dark:rounded-xl!"
+          disabled={isLoading}
+        >
           {isLoading ? "Signing in..." : "Sign in"}
         </Button>
       </form>
