@@ -44,12 +44,12 @@ export function ImageUpload({
 
   return (
     <div className={cn("flex items-start gap-4", className)}>
-      <div className="group relative flex size-32 cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed border-white/10 bg-white/5 transition-colors hover:border-primary/50 hover:bg-white/10">
+      <div className="group relative flex size-32 cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-white/10 bg-white/5 transition-colors hover:border-primary/50 hover:bg-white/10">
         {preview ? (
           <img
             src={preview}
             alt="Preview"
-            className="size-full rounded-xl object-cover p-1"
+            className="size-full rounded-lg object-cover p-1"
           />
         ) : (
           <label className="flex size-full cursor-pointer flex-col items-center justify-center">

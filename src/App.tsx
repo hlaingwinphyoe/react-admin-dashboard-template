@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/provider/theme-provider";
 import { useEffect, useState } from "react";
 import Spinner from "./components/shared/Spinner";
 import { Toaster } from "@/components/ui/sonner";
+import { TooltipProvider } from "./components/ui/tooltip";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -35,13 +36,14 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
         <AppInitializer>
-          <RouterProvider router={router} />
-          <Toaster position="bottom-right" richColors />
+          <TooltipProvider>
+            <RouterProvider router={router} />
+            <Toaster position="bottom-right" richColors />
+          </TooltipProvider>
         </AppInitializer>
       </ThemeProvider>
     </QueryClientProvider>
   );
 }
-
 
 export default App;

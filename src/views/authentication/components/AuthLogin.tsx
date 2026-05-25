@@ -81,7 +81,7 @@ const AuthLogin = () => {
 
         <Button
           type="submit"
-          className="w-full h-11 dark:rounded-xl!"
+          className="w-full h-11"
           disabled={isLoading}
         >
           {isLoading ? "Signing in..." : "Sign in"}

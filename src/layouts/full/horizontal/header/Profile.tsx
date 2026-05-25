@@ -35,7 +35,7 @@ const Profile = () => {
         <DropdownMenuTrigger
           nativeButton={false}
           render={
-            <div className="group cursor-pointer flex w-full items-center gap-3 rounded-xl border border-border bg-white dark:bg-white/5 px-2 py-px shadow-sm transition-all duration-200 hover:bg-muted hover:shadow-md">
+            <div className="group cursor-pointer flex w-full items-center gap-3 rounded-lg border border-border bg-white dark:bg-white/5 px-2 py-px transition-all duration-200 hover:bg-muted">
               {/* Avatar */}
               <Avatar className="h-8 w-8 ring-1 ring-border">
                 <AvatarImage
@@ -75,7 +75,7 @@ const Profile = () => {
                 render={
                   <Link
                     to={items.url}
-                    className="group/link flex w-full items-center justify-between px-3 py-2 cursor-pointer transition-colors hover:bg-accent hover:text-accent-foreground hover:outline-none rounded-xl"
+                    className="group/link flex w-full items-center justify-between px-3 py-2 cursor-pointer transition-colors hover:bg-accent hover:text-accent-foreground hover:outline-none rounded-lg"
                   />
                 }
               >

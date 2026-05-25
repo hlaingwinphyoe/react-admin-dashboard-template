@@ -26,7 +26,7 @@ function SidebarBrand() {
     <Link
       to="/"
       className={cn(
-        "flex w-full items-center overflow-hidden rounded-2xl px-4 py-1 transition-colors",
+        "flex w-full items-center overflow-hidden rounded-xl px-4 py-1 transition-colors",
         showFullBrand ? "justify-start gap-4" : "justify-center px-0",
       )}
     >
@@ -39,7 +39,7 @@ function SidebarBrand() {
         <div
           className={cn(
             "flex shrink-0 items-center justify-center bg-white/3 ring-1 ring-white/8",
-            showFullBrand ? "size-14 rounded-2xl" : "size-12 rounded-xl",
+            showFullBrand ? "size-14 rounded-xl" : "size-12 rounded-lg",
           )}
         >
           {showFullBrand ? (

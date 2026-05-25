@@ -36,7 +36,7 @@ const Notifications = () => {
             <div className="relative border-none outline-none">
               <button
                 type="button"
-                className="flex size-10 items-center justify-center rounded-xl border border-border bg-white dark:bg-white/2 text-foreground transition-colors hover:bg-muted group-hover/menu:bg-muted dark:text-muted-foreground"
+                className="flex size-10 items-center justify-center rounded-lg border border-border bg-white dark:bg-white/2 text-foreground transition-colors hover:bg-muted group-hover/menu:bg-muted dark:text-muted-foreground"
               >
                 <Bell size={20} />
               </button>

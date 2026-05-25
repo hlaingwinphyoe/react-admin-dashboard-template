@@ -30,13 +30,13 @@ const RouteErrorElement = () => {
         <Button 
           variant="outline" 
           onClick={() => window.location.reload()}
-          className="rounded-xl border-white/10 bg-white/5 hover:bg-white/10"
+          className="rounded-lg"
         >
           Try Again
         </Button>
         <Link 
           to="/" 
-          className={cn(buttonVariants({ variant: 'default', size: 'lg' }), "rounded-xl")}
+          className={cn(buttonVariants({ variant: 'default', size: 'lg' }), "rounded-lg")}
         >
           Go Back to Home
         </Link>

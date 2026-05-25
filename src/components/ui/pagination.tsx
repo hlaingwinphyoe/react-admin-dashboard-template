@@ -7,13 +7,7 @@ import {
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { PaginationMeta } from "@/types";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "./select";
+import { NativeSelect } from "./native-select";
 
 interface PaginationProps {
   meta: PaginationMeta;
@@ -96,20 +90,16 @@ const Pagination = ({
 
       <div className="flex flex-wrap items-center gap-2 sm:gap-4">
         <div className="flex items-center gap-2">
-          <Select
+          <NativeSelect
             value={per_page.toString()}
-            onValueChange={(v) => onPerPageChange(Number(v))}
+            onChange={(e) => onPerPageChange(Number(e.target.value))}
+            className="h-9 w-20"
           >
-            <SelectTrigger className="h-9 w-20">
-              <SelectValue placeholder={per_page.toString()} />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="10">10</SelectItem>
-              <SelectItem value="25">25</SelectItem>
-              <SelectItem value="50">50</SelectItem>
-              <SelectItem value="100">100</SelectItem>
-            </SelectContent>
-          </Select>
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+          </NativeSelect>
           <span className="whitespace-nowrap text-sm text-muted-foreground">
             Page{" "}
             <span className="font-medium text-foreground">{current_page}</span>{" "}
